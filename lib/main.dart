@@ -23,27 +23,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _batteryLevel = 0;
+  int _batteryLevel = -1;
 
   Future<void> _getBatteryLevel() async {
     const platform = MethodChannel('course.flutter.dev/battery');
     try {
-      final batteryLevel = await platform
-          .invokeMethod('getBatteryLevel'); // , [] for parameters if needed
+      final batteryLevel = await platform.invokeMethod('getBatteryLevel');
       setState(() {
         _batteryLevel = batteryLevel;
       });
     } on PlatformException catch (error) {
       setState(() {
-        _batteryLevel = 0;
+        _batteryLevel = -1;
       });
     }
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    _getBatteryLevel();
   }
 
   @override
