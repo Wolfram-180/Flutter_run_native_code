@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Native Code'),
       ),
       body: Center(
-        child: Text('Battery Level: $_batteryLevel'),
+        child: Text('Battery Level: $_batteryLevel percent'),
       ),
     );
   }
